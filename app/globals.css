@@ -1,0 +1,364 @@
+/* =========================================================
+   Smart Parking — สไตล์หลัก (ดึงสีและขนาดจาก Figma หน้า "ต้นฉบับ")
+   ========================================================= */
+
+:root {
+  /* สีเขียว */
+  --green-900: #0b3d2a;
+  --green-800: #0f5132;
+  --green-700: #127a4a; /* สีหลัก ★ */
+  --green-500: #22c55e;
+  --green-200: #bbf7d0;
+  --green-100: #dcfce7;
+  --green-50: #f0fdf4;
+  /* พื้นและเส้น */
+  --bg: #f4f7f5;
+  --surface: #ffffff;
+  --border: #e2e8e4;
+  --neutral-300: #cbd5d0;
+  /* ตัวอักษร */
+  --text: #0f1f17;
+  --text-2: #5b6b63;
+  --text-inverse: #ffffff;
+  /* สถานะ */
+  --danger: #e5484d;
+  --danger-bg: #fdecec;
+  --warning: #d97706;
+  --warning-bg: #fef3c7;
+
+  --radius-card: 20px;
+  --radius-btn: 12px;
+  --font: var(--font-plex), "IBM Plex Sans Thai", "Noto Sans Thai", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, select { font-family: inherit; }
+h1, h2, h3, p { margin: 0; }
+
+/* ---------- ตัวอักษร ---------- */
+.muted { color: var(--text-2); }
+.text-green { color: var(--green-700); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.small { font-size: 12px; }
+.tiny { font-size: 11px; }
+.semibold { font-weight: 600; }
+.bold { font-weight: 700; }
+
+/* ---------- layout ช่วยจัดวาง ---------- */
+.row { display: flex; align-items: center; gap: 12px; }
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.col { display: flex; flex-direction: column; gap: 12px; }
+.grow { flex: 1; min-width: 0; }
+.wrap { flex-wrap: wrap; }
+
+/* ---------- ปุ่ม ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 20px; border-radius: var(--radius-btn);
+  font-size: 15px; font-weight: 600; border: 1px solid transparent;
+  transition: background .15s, filter .15s, transform .05s;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--green-700); color: #fff; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-secondary { background: var(--green-50); color: var(--green-700); border-color: var(--green-200); }
+.btn-secondary:hover { background: var(--green-100); }
+.btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn-ghost:hover { background: var(--bg); }
+.btn-block { width: 100%; }
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px; border-radius: 12px; background: var(--surface);
+  border: 1px solid var(--border); color: var(--text-2);
+}
+.icon-btn:hover { background: var(--bg); }
+
+/* ---------- ป้ายสถานะ ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap;
+}
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badge-success { background: var(--green-100); color: var(--green-700); }
+.badge-danger { background: var(--danger-bg); color: var(--danger); }
+.badge-warning { background: var(--warning-bg); color: var(--warning); }
+.badge-neutral { background: var(--bg); color: var(--text-2); }
+
+/* ---------- การ์ด ---------- */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-card); padding: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+a.card { transition: box-shadow .15s, border-color .15s; }
+a.card:hover { border-color: var(--green-200); box-shadow: 0 6px 20px rgba(11, 61, 42, .06); }
+.card-title { font-size: 16px; font-weight: 600; }
+.card-sub { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+
+/* ---------- ช่องกรอก ---------- */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; font-weight: 500; }
+.input {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 14px; border-radius: 12px; background: var(--bg);
+  border: 1px solid var(--border); min-height: 46px;
+}
+.input:focus-within { background: var(--surface); border-color: var(--green-500); box-shadow: 0 0 0 3px rgba(34, 197, 94, .12); }
+.input input, .input select {
+  flex: 1; border: 0; outline: 0; background: transparent; font-size: 15px; color: var(--text); min-width: 0; padding: 12px 0;
+}
+.input .unit { font-size: 13px; color: var(--text-2); }
+
+/* ---------- สวิตช์ ---------- */
+.switch { width: 40px; height: 24px; border-radius: 12px; background: var(--neutral-300); border: 0; padding: 2px; position: relative; transition: background .15s; }
+.switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: left .15s; }
+.switch.on { background: var(--green-700); }
+.switch.on::after { left: 18px; }
+
+/* ---------- ช่องติ๊ก ---------- */
+.checkbox { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--neutral-300); background: #fff; display: inline-flex; align-items: center; justify-content: center; padding: 0; color: #fff; }
+.checkbox.on { background: var(--green-700); border-color: var(--green-700); }
+
+/* ---------- ตาราง ---------- */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th { text-align: left; font-size: 12px; font-weight: 600; color: var(--text-2); background: var(--bg); padding: 10px 16px; }
+.table th:first-child { border-radius: 10px 0 0 10px; }
+.table th:last-child { border-radius: 0 10px 10px 0; }
+.table td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.table td:first-child { font-weight: 600; }
+
+/* ---------- แถว ป้ายชื่อ:ค่า ---------- */
+.kv { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.kv span:first-child { color: var(--text-2); }
+.kv span:last-child { font-weight: 600; }
+
+/* =========================================================
+   ฝั่ง Admin
+   ========================================================= */
+.admin { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 264px; flex-shrink: 0; background: var(--green-700); color: #fff;
+  padding: 24px 20px; display: flex; flex-direction: column; gap: 6px;
+  position: sticky; top: 0; height: 100vh;
+}
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 0 24px 8px; }
+.brand-name { font-size: 16px; font-weight: 600; }
+.brand-sub { font-size: 12px; color: var(--green-200); }
+.logo-mark {
+  width: 42px; height: 42px; border-radius: 12px; background: #fff; color: var(--green-700);
+  display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25); flex-shrink: 0;
+}
+.logo-mark.on-light { background: var(--green-700); color: #fff; box-shadow: 0 4px 12px rgba(18, 122, 74, .35); }
+.nav-item {
+  display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 10px;
+  color: var(--green-200); font-size: 14px; transition: background .15s;
+}
+.nav-item:hover { background: rgba(255, 255, 255, .08); }
+.nav-item.active { background: var(--green-500); color: #fff; font-weight: 600; }
+.user-card { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 12px; background: var(--green-800); }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--green-500); display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; color: #fff; flex-shrink: 0; }
+.logout { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px; border-radius: 10px; border: 1px solid var(--green-500); color: var(--green-200); font-size: 14px; font-weight: 500; }
+.logout:hover { background: rgba(255, 255, 255, .06); }
+
+.main { flex: 1; min-width: 0; padding: 28px 32px 32px; display: flex; flex-direction: column; gap: 24px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.page-title { font-size: 26px; font-weight: 700; }
+.page-sub { font-size: 14px; color: var(--text-2); margin-top: 4px; }
+
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 20px; }
+.split-left { display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 20px; }
+
+/* KPI */
+.kpi { gap: 10px; padding: 20px; }
+.kpi-head { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--text-2); }
+.kpi-icon { padding: 8px; border-radius: 10px; background: var(--green-100); color: var(--green-700); display: inline-flex; }
+.kpi-value { font-size: 28px; font-weight: 700; }
+.kpi-delta { font-size: 12px; font-weight: 500; color: var(--green-700); }
+
+/* กราฟแท่ง */
+.bars { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.bar-col { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+.bar { width: 100%; max-width: 30px; border-radius: 6px; background: var(--green-200); }
+.bar.mid { background: var(--green-500); }
+.bar.dark { background: var(--green-700); }
+.bar-label { font-size: 11px; color: var(--text-2); text-align: center; line-height: 1.3; }
+
+/* แถบความคืบหน้า */
+.track { height: 8px; border-radius: 4px; background: var(--green-50); overflow: hidden; }
+.track > div { height: 100%; border-radius: 4px; background: var(--green-700); }
+
+/* ช่องจอด */
+.lot { background: var(--bg); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.slot-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.slot {
+  width: 64px; height: 92px; border-radius: 10px; border: 1.5px solid; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px; font-size: 13px; font-weight: 600;
+}
+.slot .status { font-size: 10px; font-weight: 500; text-align: center; padding: 0 2px; }
+.slot.free { background: var(--green-50); border-color: var(--green-500); color: var(--green-700); }
+.slot.free svg { opacity: .35; }
+.slot.occupied { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+.slot.maintenance { background: var(--bg); border-color: var(--neutral-300); color: var(--text-2); }
+.slot .label { color: var(--text); }
+.driveway { font-size: 12px; font-weight: 500; color: var(--text-2); }
+
+/* ตัวเลือกแบบปุ่มติดกัน */
+.segmented { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.segmented button { border: 0; background: transparent; padding: 7px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--text-2); }
+.segmented button.active { background: var(--green-700); color: #fff; font-weight: 600; }
+.segmented.soft { background: var(--bg); border: 0; }
+
+/* แท็บ */
+.tabs { display: flex; gap: 28px; border-bottom: 1px solid var(--border); }
+.tab { display: flex; align-items: center; gap: 8px; padding: 12px 4px; font-size: 16px; font-weight: 500; color: var(--text-2); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tab.active { color: var(--green-700); font-weight: 600; border-bottom-color: var(--green-700); }
+
+/* ปุ่มกรอบ (pill) */
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); font-size: 14px; font-weight: 500; color: var(--text); }
+.pill:hover { background: var(--bg); }
+
+/* หน้าต่างลอย (dialog / dropdown) */
+.overlay { position: fixed; inset: 0; background: rgba(11, 31, 23, .35); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px; }
+.dialog { background: var(--surface); border-radius: 24px; padding: 24px 28px; width: 500px; max-width: 100%; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 16px 40px rgba(11, 61, 42, .18); max-height: calc(100vh - 32px); overflow: auto; }
+.popover { position: absolute; right: 0; top: calc(100% + 8px); z-index: 40; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 12px 32px rgba(11, 61, 42, .16); display: flex; overflow: hidden; }
+
+/* ปฏิทิน */
+.presets { width: 170px; background: var(--bg); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+.presets button { text-align: left; border: 0; background: transparent; padding: 9px 12px; border-radius: 10px; font-size: 14px; font-weight: 500; color: var(--text); }
+.presets button.active { background: var(--green-700); color: #fff; font-weight: 600; }
+.calendar { padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; width: 348px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 44px); row-gap: 4px; }
+.cal-dow { font-size: 12px; font-weight: 500; color: var(--text-2); text-align: center; padding: 4px 0; }
+.cal-cell { height: 40px; display: flex; align-items: center; justify-content: center; }
+.cal-cell.in-range { background: var(--green-100); }
+.cal-cell.range-start { border-radius: 12px 0 0 12px; }
+.cal-cell.range-end { border-radius: 0 12px 12px 0; }
+.cal-cell.range-start.range-end { border-radius: 12px; background: transparent; }
+.cal-day { width: 38px; height: 38px; border-radius: 12px; border: 0; background: transparent; font-size: 14px; color: var(--text); }
+.cal-day:hover { background: var(--green-50); }
+.cal-day.outside { color: var(--neutral-300); }
+.cal-cell.in-range .cal-day { color: var(--green-800); }
+.cal-day.edge { background: var(--green-700); color: #fff !important; font-weight: 600; }
+.date-box { flex: 1; padding: 8px 12px; border-radius: 12px; background: var(--bg); border: 1px solid var(--border); }
+
+/* กรอบตู้ Kiosk ในจอที่ตู้ */
+.video { position: relative; background: #0d2119; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; color: var(--green-800); }
+.video .live { position: absolute; left: 8px; top: 8px; background: rgba(0, 0, 0, .55); color: #fff; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; display: flex; align-items: center; gap: 5px; }
+.video .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--danger); }
+.video .clock { position: absolute; right: 8px; top: 10px; color: rgba(255, 255, 255, .8); font-size: 10px; font-weight: 500; }
+.video .box { position: absolute; left: 50%; top: 55%; width: 34%; height: 18%; transform: translate(-50%, -50%); border: 2px solid var(--green-500); border-radius: 3px; }
+.video .plate-tag { position: absolute; left: 8px; bottom: 8px; background: var(--green-700); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; }
+.video .plate-tag span { color: var(--green-100); font-weight: 400; margin-left: 6px; font-size: 10px; }
+
+/* =========================================================
+   ฝั่งผู้ใช้ (มือถือ)
+   ========================================================= */
+.mobile-wrap { min-height: 100vh; display: flex; justify-content: center; background: #e7ece9; }
+.mobile { width: 100%; max-width: 430px; min-height: 100vh; background: var(--bg); display: flex; flex-direction: column; }
+.m-topbar { display: flex; align-items: center; gap: 12px; padding: 16px 20px; font-size: 18px; font-weight: 600; }
+.m-content { flex: 1; padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+.m-hero { background: var(--green-700); color: #fff; padding: 28px 24px 40px; display: flex; flex-direction: column; gap: 8px; }
+
+@media (max-width: 1200px) {
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .split, .split-left { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* =========================================================
+   หน้าจำลองประตูลานจอด (/gate) — ใช้นำเสนองาน
+   ========================================================= */
+.sim-page { min-height: 100vh; background: #13231c; color: #fff; padding: 24px 32px 32px; display: flex; flex-direction: column; gap: 20px; }
+.sim-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.sim-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.sim-stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 8px 14px; font-size: 13px; color: var(--green-100); }
+.sim-stat b { color: #fff; font-size: 16px; margin-left: 4px; }
+.sim-lanes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.sim-lane { background: var(--green-900); border: 1px solid var(--green-800); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.sim-lane-title { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.sim-lane-title h2 { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+
+/* ขั้นตอน */
+.sim-steps { display: flex; gap: 6px; flex-wrap: wrap; }
+.sim-step { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.06); color: var(--green-200); opacity: .55; transition: all .3s; }
+.sim-step.done { opacity: 1; background: var(--green-800); }
+.sim-step.active { opacity: 1; background: var(--green-500); color: var(--green-900); font-weight: 600; }
+
+/* ฉาก */
+.sim-scene { position: relative; height: 230px; border-radius: 16px; overflow: hidden; background: linear-gradient(#e9ecea, #f4f5f4 62%); } /* พื้นหลังสีเทาจาง */
+.sim-road { position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: #34433c; }
+.sim-road::after { content: ""; position: absolute; left: 0; right: 0; top: 33px; height: 4px; background: repeating-linear-gradient(90deg, #f5f5f4 0 26px, transparent 26px 52px); opacity: .7; }
+.sim-car { position: absolute; bottom: 22px; width: 150px; height: 64px; transition: left 1.8s cubic-bezier(.45,.05,.35,1); z-index: 2; }
+.sim-car.instant { transition: none; }
+.sim-car .wheel { transform-box: fill-box; transform-origin: center; }
+.sim-car.moving .wheel { animation: sim-spin .45s linear infinite; }
+.sim-car.reverse .wheel { animation-direction: reverse; }
+@keyframes sim-spin { to { transform: rotate(360deg); } }
+.sim-car .plate { position: absolute; right: -6px; bottom: 9px; background: #fff; color: var(--text); border: 1.5px solid var(--text); border-radius: 4px; font-size: 10px; font-weight: 700; padding: 0 4px; white-space: nowrap; line-height: 15px; }
+.sim-post { position: absolute; bottom: 22px; width: 12px; height: 92px; background: linear-gradient(90deg, #d6dcd9, #f5f5f4); border-radius: 4px 4px 0 0; z-index: 3; }
+.sim-arm { position: absolute; bottom: 92px; height: 9px; width: 104px; border-radius: 5px; background: repeating-linear-gradient(90deg, #e5484d 0 14px, #fff 14px 28px); transform-origin: right center; transition: transform .9s ease-in-out; z-index: 3; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.sim-arm.open { transform: rotate(80deg); }
+.sim-light { position: absolute; bottom: 104px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #1f2a25; z-index: 4; transition: background .3s, box-shadow .3s; }
+.sim-light.red { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.sim-light.green { background: var(--green-500); box-shadow: 0 0 12px var(--green-500); }
+.sim-light.amber { background: #f59e0b; box-shadow: 0 0 10px #f59e0b; }
+/* ตู้ Kiosk อ่านทะเบียน (อยู่ข้างไม้กั้น รถจอดชิดตู้) */
+.sim-booth { position: absolute; bottom: 22px; width: 56px; height: 132px; z-index: 1; border-radius: 12px 12px 4px 4px; background: linear-gradient(90deg, #dfe7e3, #f7faf8 55%, #d3ddd8); border: 2px solid #9fb0a8; box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+.sim-booth::before { content: "KIOSK"; position: absolute; top: 3px; left: 0; right: 0; text-align: center; font-size: 7px; font-weight: 700; letter-spacing: 1px; color: var(--green-700); }
+.sim-booth-screen { position: absolute; top: 14px; left: 6px; right: 6px; height: 40px; border-radius: 5px; background: #0b3d2a; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; font-size: 7px; font-weight: 600; text-align: center; line-height: 1.15; overflow: hidden; }
+.sim-booth-screen.ok { background: var(--green-700); }
+.sim-booth-screen.warn { background: #b45309; }
+.sim-booth-screen.err { background: var(--danger); }
+.sim-booth-scanline { position: absolute; left: 0; right: 0; height: 2px; background: #4ade80; box-shadow: 0 0 6px #4ade80; animation: sim-scanline 0.9s ease-in-out infinite alternate; }
+@keyframes sim-scanline { from { top: 2px; } to { top: 36px; } }
+.sim-booth-reader { position: absolute; top: 62px; left: 10px; right: 10px; height: 9px; border-radius: 5px; background: #1f2a25; transition: background .3s, box-shadow .3s; }
+.sim-booth-reader.on { background: #22c55e; box-shadow: 0 0 14px 4px rgba(34,197,94,.7); animation: sim-blink .6s infinite; }
+@keyframes sim-blink { 50% { opacity: .35; } }
+.sim-booth-slot { position: absolute; top: 80px; left: 16px; right: 16px; height: 4px; border-radius: 2px; background: #6b7f76; }
+.sim-lpr { position: absolute; left: 12px; top: 12px; background: rgba(11,61,42,.88); color: #fff; border-radius: 10px; padding: 6px 10px; font-size: 12px; display: flex; align-items: center; gap: 6px; z-index: 5; }
+.sim-lpr b { font-size: 15px; letter-spacing: .5px; }
+
+/* จอที่ตู้ */
+.sim-kiosk { background: #fff; color: var(--text); border-radius: 16px; padding: 18px 20px; min-height: 178px; display: flex; flex-direction: column; gap: 10px; }
+.sim-kiosk .big { font-size: 26px; font-weight: 700; }
+.sim-kiosk .kv { padding: 6px 0; }
+.sim-controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.sim-controls .input { min-height: 42px; background: #fff; flex: 1; min-width: 160px; }
+.sim-controls select { flex: 1; min-width: 200px; padding: 10px 12px; border-radius: 12px; border: 0; font-size: 14px; }
+
+@media (max-width: 1100px) {
+  .sim-lanes { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ช่องจอดแบบกดได้ (โหมดตั้งค่าช่องซ่อม) */
+.slot.clickable { cursor: pointer; font-family: inherit; transition: transform .15s, box-shadow .15s; }
+.slot.clickable:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+.slot.occupied.clickable { cursor: pointer; }
+.slot.maintenance { background: repeating-linear-gradient(135deg, #f4f7f5 0 8px, #e6ebe8 8px 16px); border-style: dashed; }
+
+/* ปุ่มเลือกสถานะช่องในโหมดตั้งค่าผังลานจอด */
+.tool-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--border); background: #fff; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer; }
+.tool-chip.active { border-color: var(--green-700); background: var(--green-50); color: var(--green-800); }
+.tool-swatch { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid; }
+.tool-swatch.occupied { background: var(--danger-bg); border-color: var(--danger); }
+.tool-swatch.free { background: var(--green-50); border-color: var(--green-500); }
+.tool-swatch.maintenance { background: repeating-linear-gradient(135deg, #f4f7f5 0 3px, #d6ddd9 3px 6px); border-color: var(--neutral-300); border-style: dashed; }
+
+/* ปุ่ม + เพิ่มช่องท้ายแถว และปุ่มลบแถว (โหมดแก้ไขลานจอด) */
+.slot.slot-add { background: #fff; border: 1.5px dashed var(--green-500); color: var(--green-700); cursor: pointer; font-family: inherit; }
+.slot.slot-add:hover { background: var(--green-50); }
+.row-action { display: inline-flex; align-items: center; gap: 4px; border: 0; background: transparent; color: var(--danger); font-family: inherit; font-size: 12px; cursor: pointer; padding: 2px 4px; }
+.tool-swatch.delete { background: #fff; border-color: var(--danger); position: relative; }
+.tool-swatch.delete::after { content: "×"; position: absolute; inset: -3px 0 0 0; text-align: center; font-size: 12px; font-weight: 700; color: var(--danger); }
